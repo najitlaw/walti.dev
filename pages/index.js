@@ -24,11 +24,7 @@ export default function Home() {
         />
         <title>walti.dev</title>
       </Head>
-      <div
-        style={{
-          backgroundColor: "yellow",
-        }}
-      >
+      <div>
         {foo.map((w) => {
           const even = w % 2 == 0;
           const points =
@@ -66,6 +62,11 @@ export default function Home() {
           margin: 0;
           padding: 0;
           overflow: hidden;
+          height: 100%;
+        }
+        #__next {
+          background-color: yellow;
+          height: 100%;
         }
       `}</style>
     </>
