@@ -11,8 +11,11 @@ export default function Home() {
   const [waveHeight, setWaveHeight] = useState(0);
 
   useEffect(() => {
-    setFoo([...Array(Math.floor(size.height / 120) + 1).keys()]);
-    setWaveHeight(100 / Math.floor(size.height / 120));
+    let wn = Math.floor(size.height / 200);
+    wn = wn % 2 === 0 ? wn : wn + 1;
+
+    setFoo([...Array(wn).keys()]);
+    setWaveHeight(100 / wn);
   }, [size]);
 
   return (
@@ -33,15 +36,15 @@ export default function Home() {
           return (
             <Wave
               style={{
-                height: `${waveHeight}vh`,
+                height: `${Math.ceil(waveHeight)}vh`,
                 width: "100vw",
                 transform: even ? "rotate(180deg)" : "",
-                marginTop: even ? "-0.5rem" : "",
+                marginTop: even && w !== 0 ? "-0.5rem" : "",
               }}
               fill="url(#gradient)"
               paused={false}
               options={{
-                height: 30,
+                height: 60,
                 amplitude: 15,
                 speed: 0.3,
                 points,
@@ -62,11 +65,7 @@ export default function Home() {
           margin: 0;
           padding: 0;
           overflow: hidden;
-          height: 100%;
-        }
-        #__next {
           background-color: yellow;
-          height: 100%;
         }
       `}</style>
     </>
